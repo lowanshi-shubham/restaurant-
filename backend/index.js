@@ -18,7 +18,7 @@ connectCloudinary();
 // middlewares
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:5173",   // ✅ Sirf frontend allow
+  origin: "https://restaurant-ffie.onrender.com",   // ✅ Sirf frontend allow
   methods: ["GET", "POST", "PUT", "DELETE" ,"PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
