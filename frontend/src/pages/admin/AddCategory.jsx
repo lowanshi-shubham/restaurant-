@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { Upload } from "lucide-react";
 import { toast } from "react-hot-toast";
-import {API} from '../../ALL_API'
 
 const AddCategory = () => {
   const { axios, navigate, loading, setLoading } = useContext(AppContext);
@@ -28,7 +27,7 @@ const AddCategory = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(API+"/api/category/add", formData, {
+      const { data } = await axios.post("/api/category/add", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       if (data.success) {

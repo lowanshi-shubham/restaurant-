@@ -2,8 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { X } from "lucide-react";
 import toast from "react-hot-toast";
-import {API} from '../ALL_API'
-
+  
 const Cart = () => {
   const { cart, totalPrice, navigate, axios, fetchCartData } =
     useContext(AppContext);
@@ -20,7 +19,7 @@ const Cart = () => {
 
   const removeFromCart = async (menuId) => {
     try {
-      const { data } = await axios.delete(`${API}/api/cart/remove/${menuId}`);
+      const { data } = await axios.delete(`/api/cart/remove/${menuId}`);
       if (data.success) {
         toast.success(data.message);
         fetchCartData();

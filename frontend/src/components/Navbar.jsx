@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
-import {API} from '../ALL_API'
-
+  
 import {
   Calendar,
   LogOut,
@@ -18,7 +17,7 @@ const Navbar = () => {
 
   const logout = async () => {
     try {
-      const { data } = await axios.post(API+"/api/auth/logout");
+      const { data } = await axios.post("/api/auth/logout");
       if (data.success) {
         setUser(null);
         toast.success(data.message);

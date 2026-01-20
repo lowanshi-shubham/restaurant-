@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { LockIcon, MailIcon, User2Icon } from "lucide-react";
 import { toast } from "react-hot-toast";
 import { AppContext } from "../context/AppContext";
-import { API } from '../ALL_API';
 const Login = () => {
   const { navigate, loading, setLoading, axios, setUser } =
     useContext(AppContext);
@@ -23,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(API+"/api/auth/login", formData);
+      const { data } = await axios.post("/api/auth/login", formData);
       if (data.success) {
         setUser(true);
         toast.success(data.message);

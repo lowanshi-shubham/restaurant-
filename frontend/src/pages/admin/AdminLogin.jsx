@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { LockIcon, MailIcon } from "lucide-react";
 import { toast } from "react-hot-toast";
 import { AppContext } from "../../context/AppContext";
-import {API} from '../../ALL_API'
 const AdminLogin = () => {
   const { navigate, loading, setLoading, axios, setAdmin } =
     useContext(AppContext);
@@ -23,7 +22,7 @@ const AdminLogin = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(API+"/api/auth/admin/login", formData);
+      const { data } = await axios.post("/api/auth/admin/login", formData);
 
       if (data.success) {
         localStorage.setItem("admin", JSON.stringify(data.admin));

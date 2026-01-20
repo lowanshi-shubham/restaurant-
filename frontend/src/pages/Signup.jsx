@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { LockIcon, MailIcon, User2Icon } from "lucide-react";
 import { toast } from "react-hot-toast";
 import { AppContext } from "../context/AppContext";
-import {API} from '../ALL_API'
 const Signup = () => {
   const { navigate, axios, loading, setLoading } = useContext(AppContext);
   // state for input value
@@ -23,7 +22,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(API+"/api/auth/register", formData);
+      const { data } = await axios.post( "/api/auth/register", formData);
       if (data.success) {
         toast.success(data.message);
         navigate("/login");

@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import toast from "react-hot-toast";
-import {API} from '../ALL_API'
-const BookTable = () => {
+  const BookTable = () => {
   const { axios, navigate } = useContext(AppContext);
   const [formData, setFormData] = useState({
     name: "",
@@ -21,7 +20,7 @@ const BookTable = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(API+"/api/booking/create", formData);
+      const { data } = await axios.post("/api/booking/create", formData);
       if (data.success) {
         toast.success(data.message);
         navigate("/my-bookings");

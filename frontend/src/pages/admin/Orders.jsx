@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { toast } from "react-hot-toast";
-import {API} from '../../ALL_API'
 
 const Orders = () => {
   const { admin, axios, loading, setLoading } = useContext(AppContext);
@@ -10,7 +9,7 @@ const Orders = () => {
 
   const fecthOrders = async () => {
     try {
-      const { data } = await axios.get(API+"/api/order/orders");
+      const { data } = await axios.get("/api/order/orders");
       console.log("dataa", data);
 
       if (data.success) {
@@ -26,7 +25,7 @@ const Orders = () => {
   const handleStatusChange = async (orderId, newStatus) => {
     try {
       setLoading(true);
-      const { data } = await axios.put(`${API}/api/order/update-status/${orderId}`, {
+      const { data } = await axios.put(`/api/order/update-status/${orderId}`, {
         status: newStatus,
       });
 

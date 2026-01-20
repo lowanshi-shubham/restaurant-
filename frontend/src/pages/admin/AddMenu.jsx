@@ -2,7 +2,6 @@ import { Upload } from "lucide-react";
 import { AppContext } from "../../context/AppContext";
 import { useState, useContext } from "react";
 import toast from "react-hot-toast";
-import {API} from '../../ALL_API'
 
 const AddMenu = () => {
   const { axios, navigate, loading, setLoading, categories } =
@@ -35,7 +34,7 @@ const AddMenu = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(API+"/api/menu/add", formData, {
+      const { data } = await axios.post("/api/menu/add", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       if (data.success) {

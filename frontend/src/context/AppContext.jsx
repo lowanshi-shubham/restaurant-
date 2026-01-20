@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {API} from '../ALL_API'
-
+  
 export const AppContext = createContext();
 
 import axios from "axios";
@@ -21,7 +20,7 @@ const AppContextProvider = ({ children }) => {
 
   const fetchCartData = async () => {
     try {
-      const { data } = await axios.get(API+"/api/cart/get");
+      const { data } = await axios.get("/api/cart/get");
       if (data.success) {
         setCart(data.cart);
       }
@@ -45,7 +44,7 @@ const AppContextProvider = ({ children }) => {
   // 🔹 Add to Cart function
   const addToCart = async (menuId) => {
     try {
-      const { data } = await axios.post(API+"/api/cart/add", {
+      const { data } = await axios.post("/api/cart/add", {
         menuId,
         quantity: 1,
       });
@@ -63,7 +62,7 @@ const AppContextProvider = ({ children }) => {
 
   const fetchCategories = async () => {
     try {
-      const { data } = await axios.get(API+"/api/category/all");
+      const { data } = await axios.get("/api/category/all");
 
       if (data.success) {
         setCategories(data.categories);
@@ -76,7 +75,7 @@ const AppContextProvider = ({ children }) => {
   };
   const fetchMenus = async () => {
     try {
-      const { data } = await axios.get(API+"/api/menu/all");
+      const { data } = await axios.get("/api/menu/all");
 
       if (data.success) {
         setMenus(data.menuItems);
@@ -90,7 +89,7 @@ const AppContextProvider = ({ children }) => {
 
   const isAuth = async () => {
     try {
-      const { data } = await axios.get(API+"/api/auth/is-auth");
+      const { data } = await axios.get("/api/auth/is-auth");
       if (data.success) {
         setUser(data.user);
       }

@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
-import {API} from '../../ALL_API'
 
 import {
   LayoutDashboard,
@@ -67,7 +66,7 @@ const AdminLayout = () => {
 
   const logout = async () => {
     try {
-      const { data } = await axios.post(API+"/api/auth/logout");
+      const { data } = await axios.post("/api/auth/logout");
       if (data.success) {
         toast.success(data.message);
         setAdmin(null);

@@ -2,14 +2,13 @@ import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import { CircleX } from "lucide-react";
 import toast from "react-hot-toast";
-import {API} from '../../ALL_API'
 
 const Menus = () => {
   const { menus, fetchMenus, axios } = useContext(AppContext);
 
   const deleteMenu = async (id) => {
     try {
-      const { data } = await axios.delete(`${API}/api/menu/delete/${id}`);
+      const { data } = await axios.delete(`/api/menu/delete/${id}`);
       if (data.success) {
         toast.success(data.message);
         fetchMenus();

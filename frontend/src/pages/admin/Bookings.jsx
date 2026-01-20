@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { toast } from "react-hot-toast";
-import {API} from '../../ALL_API'
 
 
 const Bookings = () => {
@@ -10,7 +9,7 @@ const Bookings = () => {
 
   const fecthBookings = async () => {
     try {
-      const { data } = await axios.get(API+"/api/booking/bookings");
+      const { data } = await axios.get("/api/booking/bookings");
       console.log("dataa", data);
 
       if (data.success) {
@@ -27,7 +26,7 @@ const Bookings = () => {
     try {
       setLoading(true);
       const { data } = await axios.put(
-        `${API}/api/booking/update-status/${bookingId}`,
+        `/api/booking/update-status/${bookingId}`,
         {
           status: newStatus,
         }

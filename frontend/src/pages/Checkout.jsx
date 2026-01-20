@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import toast from "react-hot-toast";
-import {API} from '../ALL_API'
-
+  
 const Checkout = () => {
   const { totalPrice, axios, navigate } = useContext(AppContext);
   const [address, setAddress] = useState("");
@@ -14,7 +13,7 @@ const Checkout = () => {
       return;
     }
     try {
-      const { data } = await axios.post(API+"/api/order/place", {
+      const { data } = await axios.post("/api/order/place", {
         address,
         paymentMethod,
       });

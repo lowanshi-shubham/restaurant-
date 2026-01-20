@@ -1,14 +1,13 @@
 import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
-import {API} from '../ALL_API'
-
+  
 const MyBookings = () => {
   const { axios } = useContext(AppContext);
   const [bookings, setBookings] = useState([]);
 
   const fetchBookings = async () => {
     try {
-      const { data } = await axios.get(API+"/api/booking/my-bookings");
+      const { data } = await axios.get("/api/booking/my-bookings");
       if (data.success) {
         setBookings(data.bookings);
       }

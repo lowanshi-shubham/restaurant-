@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
-import {API} from '../ALL_API'
-
+  
 const MyOrders = () => {
   const { axios } = useContext(AppContext);
   const [orders, setOrders] = useState([]);
 
   const fetchMyOrders = async () => {
     try {
-      const { data } = await axios.get(API+"/api/order/my-orders");
+      const { data } = await axios.get("/api/order/my-orders");
       if (data.success) {
         setOrders(data.orders);
       }
