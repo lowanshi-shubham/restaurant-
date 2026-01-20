@@ -27,13 +27,13 @@ const Signup = () => {
         toast.success(data.message);
         navigate("/login");
       } else {
-        console.log("Signup Error"+data.data);
+        console.log("Signup Data"+data.data);
         toast.error(data.message);
 
       }
     } catch (error) {
+      console.log("Signup Error"+error.response.data.message)
       toast.error(error.response.data.message);
-      console.log(error.response.data.message)
     } finally {
       setLoading(false);
     }
