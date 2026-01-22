@@ -4,20 +4,20 @@ import bcrypt from "bcryptjs";
 // Generate JWT
 const generateToken = (res, payload) => {
   const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1d" });
-  // res.cookie("token", token, {
-  //   httpOnly: true,
-  //   secure: process.env.NODE_ENV === "production",
-  //   sameSite: "none",
-  //   maxAge: 24 * 60 * 60 * 1000,
-  // });
-
   res.cookie("token", token, {
-  httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite:
-    process.env.NODE_ENV === "production" ? "none" : "lax",
-  maxAge: 24 * 60 * 60 * 1000,
-});
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "none",
+    maxAge: 24 * 60 * 60 * 1000,
+  });
+
+  // res.cookie("token", token, {
+  // httpOnly: true,
+  // secure: process.env.NODE_ENV === "production",
+  // sameSite:
+  //   process.env.NODE_ENV === "production" ? "none" : "lax",
+  // maxAge: 24 * 60 * 60 * 1000,
+// });
 
   return token;
 };
@@ -101,20 +101,20 @@ export const adminLogin = async (req, res) => {
       expiresIn: "1d",
     });
 
-    // res.cookie("token", token, {
-    //   httpOnly: true,
-    //   secure: process.env.NODE_ENV === "development",
-    //   sameSite: "none",
-    //   maxAge: 24 * 60 * 60 * 1000,
-    // });
-
     res.cookie("token", token, {
-  httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite:
-    process.env.NODE_ENV === "production" ? "none" : "lax",
-  maxAge: 24 * 60 * 60 * 1000,
-});
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "development",
+      sameSite: "none",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+
+//     res.cookie("token", token, {
+//   httpOnly: true,
+//   secure: process.env.NODE_ENV === "production",
+//   sameSite:
+//     process.env.NODE_ENV === "production" ? "none" : "lax",
+//   maxAge: 24 * 60 * 60 * 1000,
+// });
 
 
     return res.json({
