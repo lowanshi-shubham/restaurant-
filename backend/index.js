@@ -21,29 +21,21 @@ app.use(express.json());
 app.use(cors({
  origin: [
    "https://restaurant-hsgw.onrender.com",
-    "http://localhost:5173"
   ],  methods: ["GET", "POST", "PUT", "DELETE" ,"PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
 app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
-
+app.get("/", (req, res) => {
+  res.send("Hello from server");
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/menu", menuRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/booking", bookingRoutes);
-
-const __dirname = path.resolve();
-
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
-app.use("/*",(req, res) => {
-  res.sendFile(
-    path.join(__dirname, "../frontend/dist/index.html")
-  );
-});
 
 
 
