@@ -38,14 +38,14 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/booking", bookingRoutes);
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
-app.use((req, res) => {
-  res.sendFile(
-    path.join(__dirname, "../frontend/dist/index.html")
-  );
-});
+// app.use(express.static(path.join(__dirname, "../frontend/dist")));
+// app.use((req, res) => {
+//   res.sendFile(
+//     path.join(__dirname, "../frontend/dist/index.html")
+//   );
+// });
 
 
 
