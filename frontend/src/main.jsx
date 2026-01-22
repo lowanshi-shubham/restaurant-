@@ -4,9 +4,9 @@ import App from "./App.jsx";
 import AppContextProvider from "./context/AppContext.jsx";
 import { BrowserRouter,HashRouter } from "react-router-dom";
 createRoot(document.getElementById("root")).render(
-  <HashRouter>
+  <BrowserRouter>
     <AppContextProvider>
       <App />
     </AppContextProvider>
-  </HashRouter>
+  </BrowserRouter>
 );
