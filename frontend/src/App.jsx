@@ -26,7 +26,15 @@ import Bookings from "./pages/admin/Bookings";
 import Dashboard from "./pages/admin/Dashboard";
 const App = () => {
   const adminPath = useLocation().pathname.includes("admin");
-  const { admin } = useContext(AppContext);
+  const { admin, adminLoading } = useContext(AppContext);
+
+if (adminPath && adminLoading) {
+  return <div className="h-screen flex items-center justify-center">
+  <span className="loader"></span>
+</div>
+
+}
+
   return (
     <div>
       <Toaster />

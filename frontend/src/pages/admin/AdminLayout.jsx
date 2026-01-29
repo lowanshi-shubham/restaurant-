@@ -69,6 +69,7 @@ const AdminLayout = () => {
       const { data } = await axios.post("/api/auth/logout");
       if (data.success) {
         toast.success(data.message);
+        localStorage.removeItem("admin");
         setAdmin(null);
       } else {
         toast.error(data.message);

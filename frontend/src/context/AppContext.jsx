@@ -12,6 +12,8 @@ const AppContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [admin, setAdmin] = useState(null);
+  const [adminLoading, setAdminLoading] = useState(true);
+
   const [categories, setCategories] = useState([]);
   const [menus, setMenus] = useState([]);
 
@@ -67,7 +69,7 @@ const AppContextProvider = ({ children }) => {
       if (data.success) {
         setCategories(data.categories);
       } else {
-        logconsole.log("Failed to fetch categories");
+        console.log("Failed to fetch categories");
       }
     } catch (error) {
       console.log("Error fetching categories:", error);
@@ -89,17 +91,38 @@ const AppContextProvider = ({ children }) => {
 
   const isAuth = async () => {
     try {
+      console.log("authenticate user")
       const { data } = await axios.get("/api/auth/is-auth");
       if (data.success) {
         setUser(data.user);
+        console.log(data)
       }
     } catch (error) {
       console.log(error);
     }
   };
 
+//   const isAdminAuth = async () => {
+//   try {
+//     const { data } = await axios.get("/api/admin/is-auth");
+//     if (data.success) {
+//       setAdmin(data.admin);
+//     } else {
+//       setAdmin(null);
+//     }
+//   } catch (error) {
+//     setAdmin(null);
+//   }
+// };
+
+
   useEffect(() => {
     isAuth();
+     const adminData = localStorage.getItem("admin");
+  if (adminData) {
+    setAdmin(JSON.parse(adminData));
+  }
+  setAdminLoading(false);
     fetchCategories();
     fetchMenus();
     fetchCartData();
@@ -113,6 +136,7 @@ const AppContextProvider = ({ children }) => {
     axios,
     admin,
     setAdmin,
+      adminLoading,
     categories,
     fetchCategories,
     menus,
