@@ -21,6 +21,8 @@ app.use(express.json());
 app.use(cors({
  origin: [
    "https://restaurant-hsgw.onrender.com",
+   "https://restaurant-two-azure.vercel.app"
+  //  "http://localhost:5173",
   ],  methods: ["GET", "POST", "PUT", "DELETE" ,"PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
