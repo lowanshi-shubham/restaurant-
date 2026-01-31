@@ -25,6 +25,7 @@ const Login = () => {
       const { data } = await axios.post("/api/auth/login", formData);
       if (data.success) {
         setUser(true);
+        localStorage.setItem("user",JSON.stringify(data.user))
         toast.success(data.message);
         navigate("/");
       } else {

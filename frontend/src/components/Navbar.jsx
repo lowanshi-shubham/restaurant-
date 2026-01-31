@@ -19,6 +19,7 @@ const Navbar = () => {
     try {
       const { data } = await axios.post("/api/auth/logout");
       if (data.success) {
+        localStorage.removeItem("user")
         setUser(null);
         toast.success(data.message);
         navigate("/");

@@ -34,7 +34,8 @@ const Bookings = () => {
 
       if (data.success) {
         toast.success(data.message);
-        fecthOrders();
+        fecthBookings();
+        // fecthOrders();
       } else {
         toast.error(data.message);
       }
@@ -50,6 +51,7 @@ const Bookings = () => {
       fecthBookings();
     }
   }, []);
+  console.log(bookings);
   return (
     <div className="py-24 px-3 sm:px-6">
       <h1 className="text-3xl font-bold text-center my-3">All Bookings</h1>

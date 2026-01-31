@@ -89,35 +89,28 @@ const AppContextProvider = ({ children }) => {
     }
   };
 
-  const isAuth = async () => {
-    try {
-      console.log("authenticate user")
-      const { data } = await axios.get("/api/auth/is-auth");
-      if (data.success) {
-        setUser(data.user);
-        console.log(data)
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const isAuth = async () => {
+  //   try {
+  //     console.log("authenticate user")
+  //     const { data } = await axios.get("/api/auth/is-auth");
+  //     if (data.success) {
+  //       setUser(data.user);
+  //       console.log(data)
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-//   const isAdminAuth = async () => {
-//   try {
-//     const { data } = await axios.get("/api/admin/is-auth");
-//     if (data.success) {
-//       setAdmin(data.admin);
-//     } else {
-//       setAdmin(null);
-//     }
-//   } catch (error) {
-//     setAdmin(null);
-//   }
-// };
 
 
   useEffect(() => {
-    isAuth();
+    // isAuth();
+  const userData = localStorage.getItem("user");
+  if (userData) {
+    setUser(JSON.parse(userData));
+  }
+
      const adminData = localStorage.getItem("admin");
   if (adminData) {
     setAdmin(JSON.parse(adminData));
