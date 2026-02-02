@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 export const protect=(req,res,next)=>{
    const token=req.cookies.token;
+   console.log("token--:",token);
    if(!token){
       return res.status(401).json({message:"Not Authorized",success:false})
    }
@@ -14,7 +15,7 @@ export const protect=(req,res,next)=>{
 }
 
 export const adminOnly=(req,res,next)=>{
-   const token=req.cookies.token;
+   const token=req.cookies.admin_token;
     if(!token){
       return res.status(401).json({message:"Not Authorized",success:false})
    }

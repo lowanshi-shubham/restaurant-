@@ -108,7 +108,7 @@ export const adminLogin = async (req, res) => {
     //   maxAge: 24 * 60 * 60 * 1000,
     // });
 
-    res.cookie("token", token, {
+    res.cookie("admin_token", token, {
   httpOnly: true,
   secure: process.env.NODE_ENV === "production",
   sameSite:
@@ -155,6 +155,7 @@ export const getProfile = async (req, res) => {
 };
 
 export const isAuth = async (req, res) => {
+  console.log("user authentication",req.admin);
   try {
     const { id } = req.user;
     const user = await User.findById(id).select("-password");
