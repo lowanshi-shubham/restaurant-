@@ -66,7 +66,7 @@ const AdminLayout = () => {
 
   const logout = async () => {
     try {
-      const { data } = await axios.post("/api/auth/logout");
+      const { data } = await axios.post("/api/auth/admin/logout");
       if (data.success) {
         toast.success(data.message);
         localStorage.removeItem("admin");
