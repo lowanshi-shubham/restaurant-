@@ -140,6 +140,16 @@ export const logoutUser = async (req, res) => {
   }
 };
 
+export const logoutAdmin = async (req, res) => {
+  try {
+    res.clearCookie("admin_token");
+    return res.json({ message: "User logged out successfully", success: true });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ message: "Internal server error", success: false });
+  }
+};
+
 export const getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
