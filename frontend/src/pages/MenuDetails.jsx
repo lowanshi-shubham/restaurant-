@@ -102,7 +102,8 @@ const MenuDetails = () => {
                 <span className="text-white text-lg font-semibold">
                   Total Amount
                 </span>
-                <span className="text-white text-3xl font-bold">$20</span>
+                <span className="text-white text-3xl font-bold">${menu.price}
+</span>
               </div>
 
               <button
