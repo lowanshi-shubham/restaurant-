@@ -45,6 +45,10 @@ const AppContextProvider = ({ children }) => {
   );
   // 🔹 Add to Cart function
   const addToCart = async (menuId) => {
+    if(!user){
+      navigate("/login");
+      return;
+    }
     try {
       const { data } = await axios.post("/api/cart/add", {
         menuId,
