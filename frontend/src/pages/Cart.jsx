@@ -76,7 +76,7 @@ const Cart = () => {
       </div>
       <div className="flex justify-between items-center mt-6">
         <h3 className="text-xl font-semibold">
-          Total: <span className="text-green-600">${totalPrice}</span>
+          Total: <span className="text-green-600">Rs.{totalPrice}</span>
         </h3>
         <button
           onClick={() => navigate("/checkout")}
