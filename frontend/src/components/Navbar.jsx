@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+
   
 import {
   Calendar,
@@ -78,6 +80,17 @@ const Navbar = () => {
                 {cartCount > 0 ? cartCount : 0}
               </span>
             </button>
+
+             {/* Mobile Toggle Button */}
+<div className="md:hidden">
+  <button
+    onClick={() => setIsMenuOpen(prev => !prev)}
+    className="p-2 rounded-md hover:bg-gray-100"
+  >
+    {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+  </button>
+</div>
+
             {/* Login/Profile - Desktop */}
             <div className="hidden md:block">
               {user ? (
@@ -134,82 +147,91 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+       
 
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-3">
-              <Link
-                to={"/"}
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
-              >
-                Home
-              </Link>
-              <Link
-                to={"/menu"}
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
-              >
-                Menus
-              </Link>
-              <Link
-                to={"/contact"}
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
-              >
-                Contact
-              </Link>
 
-              {user ? (
-                <div className="relative">
-                  <button
-                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                    onMouseEnter={() => setIsProfileOpen(true)}
-                    onMouseLeave={() => setIsProfileOpen(false)}
-                  >
-                    <UserCircle size={30} className="text-gray-700" />
-                  </button>
+{/* Mobile Menu */}
+{isMenuOpen && (
+  <div className="md:hidden py-4 border-t border-gray-200">
+    <div className="flex flex-col space-y-3">
 
-                  {isProfileOpen && (
-                    <div
-                      onMouseEnter={() => setIsProfileOpen(true)}
-                      onMouseLeave={() => setIsProfileOpen(false)}
-                      className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 border border-gray-100"
-                    >
-                      <Link
-                        to={"/my-bookings"}
-                        className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-                      >
-                        <Calendar size={18} className="mr-3" />
-                        My Bookings
-                      </Link>
-                      <Link
-                        to={"/my-orders"}
-                        className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-                      >
-                        <Package size={18} className="mr-3" />
-                        My Orders
-                      </Link>
+      <Link
+        to="/"
+        onClick={() => setIsMenuOpen(false)}
+        className="text-gray-700 hover:text-blue-600 font-medium"
+      >
+        Home
+      </Link>
 
-                      <button
-                        onClick={logout}
-                        className="flex items-center w-full px-4 py-2 text-red-600 hover:bg-red-50 transition-colors"
-                      >
-                        <LogOut size={18} className="mr-3" />
-                        Logout
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <button
-                  onClick={() => navigate("/login")}
-                  className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium cursor-pointer"
-                >
-                  Login
-                </button>
-              )}
-            </div>
-          </div>
-        )}
+      <Link
+        to="/menu"
+        onClick={() => setIsMenuOpen(false)}
+        className="text-gray-700 hover:text-blue-600 font-medium"
+      >
+        Menus
+      </Link>
+      
+            <Link
+              to={"/book-table"}
+                      onClick={() => setIsMenuOpen(false)}
+
+              className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+            >
+              Book Table
+            </Link>
+
+      <Link
+        to="/contact"
+        onClick={() => setIsMenuOpen(false)}
+        className="text-gray-700 hover:text-blue-600 font-medium"
+      >
+        Contact
+      </Link>
+
+      {user ? (
+        <>
+          <Link
+            to="/my-bookings"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-gray-700 hover:text-blue-600 font-medium"
+          >
+            My Bookings
+          </Link>
+
+          <Link
+            to="/my-orders"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-gray-700 hover:text-blue-600 font-medium"
+          >
+            My Orders
+          </Link>
+
+          <button
+            onClick={() => {
+              logout();
+              setIsMenuOpen(false);
+            }}
+            className="text-red-600 text-left font-medium"
+          >
+            Logout
+          </button>
+        </>
+      ) : (
+        <button
+          onClick={() => {
+            navigate("/login");
+            setIsMenuOpen(false);
+          }}
+          className="bg-orange-500 text-white px-4 py-2 rounded-lg"
+        >
+          Login
+        </button>
+      )}
+    </div>
+  </div>
+)}
+
+  
       </div>
     </nav>
   );
