@@ -14,16 +14,41 @@ export default function NewsLetter() {
         <h1 className="max-w-lg font-semibold text-4xl/[44px] mt-2">
           Subscribe to our newsletter & get the latest news
         </h1>
-        <div className="flex items-center justify-center mt-10 border border-slate-600 focus-within:outline focus-within:outline-indigo-600 text-sm rounded-full h-14 max-w-md w-full">
-          <input
-            type="text"
-            className="bg-transparent outline-none rounded-full px-4 h-full flex-1"
-            placeholder="Enter your email address"
-          />
-          <button className="bg-indigo-600 text-white rounded-full h-11 mr-1 px-8 flex items-center justify-center">
-            Subscribe now
-          </button>
-        </div>
+        <div className="mt-12 w-full flex justify-center px-4">
+  <div
+    className="w-full max-w-xl 
+               flex flex-col sm:flex-row 
+               items-stretch 
+              
+               border border-slate-300 
+               rounded-2xl 
+               shadow-sm 
+               overflow-hidden"
+  >
+    <input
+      type="email"
+      placeholder="Enter your email address"
+      className=" bg-transparent
+      flex-1 px-5 py-4 
+                 outline-none 
+                 text-sm"
+    />
+
+    <button
+      className="bg-indigo-600 
+                 hover:bg-indigo-700 
+                 transition 
+                 text-white 
+                 px-6 
+                 py-4 
+                 text-sm 
+                 font-medium"
+    >
+      Subscribe Now
+    </button>
+  </div>
+</div>
+
       </div>
     </>
   );
