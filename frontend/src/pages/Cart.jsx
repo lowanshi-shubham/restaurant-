@@ -61,10 +61,10 @@ const Cart = () => {
                   {item.quantity}
                 </td>
                 <td className="py-3 px-4 text-center text-gray-700">
-                  $. {item.menuItem.price}
+                  Rs. {item.menuItem.price}
                 </td>
                 <td className="py-3 px-4 text-center text-gray-700 font-semibold">
-                  $. {item.menuItem.price * item.quantity}
+                  Rs. {item.menuItem.price * item.quantity}
                 </td>
                 <td className="py-3 px-4 text-center text-gray-700 font-semibold">
                   <X onClick={() => removeFromCart(item.menuItem._id)} />
