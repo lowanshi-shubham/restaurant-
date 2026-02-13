@@ -56,7 +56,7 @@ export const loginUser = async (req, res) => {
       });
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email ,"isAdmin":false });
     if (!user) {
       return res.json({ message: "User does not exist", success: false });
     }
